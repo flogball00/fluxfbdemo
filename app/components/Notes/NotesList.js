@@ -5,10 +5,18 @@ var NotesList = React.createClass({
         noteActions.removeNote(key, this.props.username);
     },
     render: function() {
-        console.log('note',this.props.notes)
+        var styles = {
+            button: {
+                height: 10,
+                width: 10,
+                color: "red",
+                cursor: "pointer",
+                textDecoration: "none"
+            }
+        }
         var notes = this.props.notes.map(function(note, index) {
             return <li className="list-group-item" key={index}> {note.note}
-                <button className="btn btn-danger pull-right" onClick={this.remove.bind(null, note.key)}>X</button>
+                <a className="pull-right" style={styles.button} onClick={this.remove.bind(null, note.key)}>X</a>
             </li>
         }.bind(this));
 
